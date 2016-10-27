@@ -3,10 +3,12 @@
 # This script downloads the latest source code of libimobiledevice, from github, and creates RPM packages.
 # The build architecture is chosen automatically.
 
+# Directories
+top_dir=$PWD/work
+
 # Checks that rpmbuild is installed
-if [ ! type 'rpmbuild' > /dev/null ]
+if ! type 'rpmbuild' > /dev/null
 then
-	
 	echo "You need the rpm development tools to create rpm packages"
 	read -p "Do you want to install rpmdevtools now? This will run sudo dnf install rpmdevtools. [y/N]" answer
 	case answer in
@@ -16,17 +18,19 @@ then
 			exit
 		;;
 	esac
+else
+	echo "rpmbuild detected!"
 fi
 
-
 # Downloads the source in a tar.gz file
-wget https://github.com/libimobiledevice/libimobiledevice/archive/master.tar.gz
+echo 'Downloading the source code of libimobiledevice...'
+mkdir $source_dir
+#wget -q --show-progress -O "$source_dir/libimobiledevice.tar.gz" https://github.com/libimobiledevice/libimobiledevice/archive/master.tar.gz
 
+echo 'Building RPM packages...'
 # Chooses the spec file based on the system's architecture
 arch=$(uname -m)
 spec_file="libimobiledevice_$arch.spec"
 
 # Creates rpm packages
-rpmbuild -ba $spec_file
-
-
+rpmbuild -ba $spec_file --define "_topdir $top_dir"
