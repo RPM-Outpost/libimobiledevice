@@ -11,7 +11,7 @@ Group:		System Environment/Libraries
 License:	LGPLv2+
 URL:		https://github.com/libimobiledevice/libimobiledevice
 Source0:	libimobiledevice.tar.gz
-# local source file (must be downloaded manually)
+# local source file (must be downloaded manually or with the script)
 BuildArch:	i686
 
 BuildRequires:	python-devel openssl-devel libplist-devel libusbmuxd-devel
