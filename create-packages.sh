@@ -35,9 +35,39 @@ arch=$(uname -m)
 spec_file="libimobiledevice_$arch.spec"
 
 # Creates rpm packages
-rpmbuild -ba $spec_file --define "_topdir $top_dir" --define "_rpmdir $rpm_dir"
-echo "-----------"
-echo "Done!"
+rpmbuild -bb --quiet $spec_file --define "_topdir $top_dir" --define "_rpmdir $rpm_dir"
+
+# If error
+if [ $? -ne 0 ]
+then
+	lib_install='sudo dnf install python-devel openssl-devel libplist-devel libusbmuxd-devel openssl libplist libusbmuxd libgcrypt glibc'
+	echo '-----------'
+	echo 'Error!'
+	read -p "Do you want to install the required libraries to try to fix the error? [y/N]" answer
+	case $answer in
+		[Yy]* ) 
+			echo "This will run $lib_install"
+			$lib_install
+			echo "Packages installed. Retrying to build the RPM packages..."
+			rpmbuild -bb --quiet $spec_file --define "_topdir $top_dir" --define "_rpmdir $rpm_dir"
+			if [ $? -ne 0 ] # Still an error!
+			then
+				echo '-----------'
+				echo 'Still an error?!'
+				echo "Sorry. You'll have to figure out what the problem is without my automatic help."
+				exit
+			fi
+			;;
+		* ) echo 
+			"Ok, I won't install the libraries." 
+			exit
+			;;
+	esac
+fi
+
+# Done without error
+echo '-----------'
+echo 'Done!'
 echo "The RPMs files are located in the \"RPMs/$arch\" folder."
 
 # Removes the work directory if the user wants to
