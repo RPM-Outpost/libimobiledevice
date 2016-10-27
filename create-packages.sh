@@ -6,6 +6,7 @@
 # Directories
 top_dir=$PWD/work
 source_dir=$top_dir/SOURCES
+rpm_dir=$PWD/RPMs
 
 # Checks that rpmbuild is installed
 if ! type 'rpmbuild' > /dev/null
@@ -34,4 +35,7 @@ arch=$(uname -m)
 spec_file="libimobiledevice_$arch.spec"
 
 # Creates rpm packages
-rpmbuild -ba $spec_file --define "_topdir $top_dir"
+rpmbuild -ba $spec_file --define "_topdir $top_dir" --define "_rpmdir $rpm_dir"
+echo "-----------"
+echo "Done!"
+echo "The RPMs files are located in the \"RPMs\" folder."
