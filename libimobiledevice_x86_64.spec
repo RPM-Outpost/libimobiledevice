@@ -15,7 +15,7 @@ Requires:	openssl libplist libusbmuxd libgcrypt glibc
 
 %description
 Library to communicate with iOS devices.
-This package has been build from github source by Guillaume R. Inspired from the libimobiledevice.spec of v1.2.0 for fedora.
+This package was built from github source by the script https://github.com/TheElectronWill/libimobiledevice-rpm/blob/master/create-packages.sh
 
 ## devel subpackage
 %package devel
