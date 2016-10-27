@@ -1,6 +1,10 @@
+%{!?release_number: %define release_number 1}
+# release_number should be defined by the caller (with the --define option of rpmbuild).
+# If the caller doesn't define it, then it is defined to 1.
+
 Name:		libimobiledevice
 Version:	1.2.1
-Release:	git.head%{?dist}
+Release:	git.%{release_number}%{?dist}
 Summary:	Library for connecting to iOS devices.
 
 Group:		System Environment/Libraries

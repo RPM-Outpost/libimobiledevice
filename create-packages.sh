@@ -27,14 +27,19 @@ fi
 # Downloads the source in a tar.gz file
 echo 'Downloading the source code of libimobiledevice...'
 mkdir -p $source_dir
-wget -q --show-progress -O "$source_dir/libimobiledevice.tar.gz" https://github.com/libimobiledevice/libimobiledevice/archive/master.tar.gz
+archive_file="$source_dir/libimobiledevice.tar.gz"
+wget -q --show-progress -O $archive_file https://github.com/libimobiledevice/libimobiledevice/archive/master.tar.gz
 
+# Gets the last modification date of libimobiledevice to determine the package's version
+echo 'Analysing the files...'
+tar -xzf $archive_file -C $work_dir
+modif_date=$(date -r $work_dir/libimobiledevice-master/README +%Y.%m.%d)
+echo "The last modification of libimobiledevice was on $modif_date"
+
+# Chooses the spec file based on the system's architecture and build the packages
 echo 'Building RPM packages...'
-# Chooses the spec file based on the system's architecture
 arch=$(uname -m)
 spec_file="libimobiledevice_$arch.spec"
-
-# Creates rpm packages
 rpmbuild -bb --quiet $spec_file --define "_topdir $work_dir" --define "_rpmdir $rpm_dir" --define "release_number $modif_date"
 
 # If error
