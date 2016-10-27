@@ -37,18 +37,18 @@ Command utilities for libimobiledevice.
 
 ## preparation
 %prep
-%autosetup
+%autosetup -n libimobiledevice-master
 
 ## build
 %build
 ./autogen.sh
-./configure
+%configure --disable-static
 %make_build
 
 ## installation
 %install
 export "QA_RPATHS=\$[0x0002]"
-# ignore errors 0x0002, or else the install fails.
+# ignore errors 0x0002 (or else the install might fails).
 
 rm -rf $RPM_BUILD_ROOT
 %make_install

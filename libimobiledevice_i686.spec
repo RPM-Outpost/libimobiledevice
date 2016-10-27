@@ -37,12 +37,12 @@ Command utilities for libimobiledevice.
 
 ## preparation
 %prep
-%autosetup
+%autosetup -n libimobiledevice-master
 
 ## build
 %build
 ./autogen.sh
-./configure
+%configure --disable-static
 %make_build
 
 ## installation

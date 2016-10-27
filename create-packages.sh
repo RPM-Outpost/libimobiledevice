@@ -5,6 +5,7 @@
 
 # Directories
 top_dir=$PWD/work
+source_dir=$top_dir/SOURCES
 
 # Checks that rpmbuild is installed
 if ! type 'rpmbuild' > /dev/null
@@ -24,8 +25,8 @@ fi
 
 # Downloads the source in a tar.gz file
 echo 'Downloading the source code of libimobiledevice...'
-mkdir $source_dir
-#wget -q --show-progress -O "$source_dir/libimobiledevice.tar.gz" https://github.com/libimobiledevice/libimobiledevice/archive/master.tar.gz
+mkdir -p $source_dir
+wget -q --show-progress -O "$source_dir/libimobiledevice.tar.gz" https://github.com/libimobiledevice/libimobiledevice/archive/master.tar.gz
 
 echo 'Building RPM packages...'
 # Chooses the spec file based on the system's architecture
