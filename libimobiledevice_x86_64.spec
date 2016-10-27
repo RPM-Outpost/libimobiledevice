@@ -73,12 +73,3 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 %files devel
 %{_includedir}/*
 %{_libdir}/*
-
-## changelog
-%changelog
-* Tue Oct 26 2016 TheElectronWill <theelectronwill@gmail.com>
-- Improve package and subpackages.
-
-* Tue Oct 25 2016 TheElectronWill <theelectronwill@gmail.com>
-- Learn how to create a fedora package.
-- Create fedora package based on git source.
