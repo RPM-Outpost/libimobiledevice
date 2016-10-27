@@ -1,6 +1,6 @@
 Name:		libimobiledevice
 Version:	1.2.1
-Release:	git.2%{?dist}
+Release:	git.head%{?dist}
 Summary:	Library for connecting to iOS devices.
 
 Group:		System Environment/Libraries
