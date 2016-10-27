@@ -4,8 +4,8 @@
 # The build architecture is chosen automatically.
 
 # Directories
-top_dir=$PWD/work
-source_dir=$top_dir/SOURCES
+work_dir=$PWD/work
+source_dir=$work_dir/SOURCES
 rpm_dir=$PWD/RPMs
 
 # Checks that rpmbuild is installed
@@ -35,7 +35,7 @@ arch=$(uname -m)
 spec_file="libimobiledevice_$arch.spec"
 
 # Creates rpm packages
-rpmbuild -bb --quiet $spec_file --define "_topdir $top_dir" --define "_rpmdir $rpm_dir"
+rpmbuild -bb --quiet $spec_file --define "_topdir $work_dir" --define "_rpmdir $rpm_dir" --define "release_number $modif_date"
 
 # If error
 if [ $? -ne 0 ]
@@ -49,7 +49,7 @@ then
 			echo "This will run $lib_install"
 			$lib_install
 			echo "Packages installed. Retrying to build the RPM packages..."
-			rpmbuild -bb --quiet $spec_file --define "_topdir $top_dir" --define "_rpmdir $rpm_dir"
+			rpmbuild -bb --quiet $spec_file --define "_topdir $work_dir" --define "_rpmdir $rpm_dir"
 			if [ $? -ne 0 ] # Still an error!
 			then
 				echo '-----------'
@@ -74,7 +74,7 @@ echo "The RPMs files are located in the \"RPMs/$arch\" folder."
 read -p "Do you want to remove the work directory? [y/N]" answer
 case $answer in
 	[Yy]* )
-		rm -r $top_dir
+		rm -r $work_dir
 		echo "Work directory removed."		
 		;;
 	* ) echo "Ok, I won't remove it." ;;
