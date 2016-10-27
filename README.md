@@ -2,9 +2,9 @@
 To communicate with iOS devices, there exists a great library: [libimobiledevice](https://github.com/libimobiledevice/libimobiledevice). Unfortunately, the latest official release is a bit old and doesn't support the most recent versions of iOS. The upstream version is much better, but it isn't easily available in Linux distros (because it's not a release).
 
 ## This repository
-This repository provides some tools to build RPM packages of the latest libimobiledevice. The script `create-packages.sh` automatically downloads the latest source from github and creates ready-to-use RPM packages.  
+This repository provides some tools to build RPM packages of the latest libimobiledevice. The script [create-packages.sh](https://github.com/TheElectronWill/libimobiledevice-rpm/blob/master/create-packages.sh) automatically downloads the latest source from github and creates ready-to-use RPM packages for your system.  
 
-You'll also find 64 bits RPM packages in the [folder RPMs/x86_64](https://github.com/TheElectronWill/libimobiledevice-rpm/tree/master/RPMs/x86_64). Download them, install them and restart your computer to enjoy using your iOS 10 Device with your distro!
+You'll also find 64 bits RPM packages in the folder [RPMs/x86_64](https://github.com/TheElectronWill/libimobiledevice-rpm/tree/master/RPMs/x86_64). Download them, install them and restart your computer to enjoy using your iOS 10 Device with your distro!
 
 ## What package(s) do I need?
 | Package's name | Description |
