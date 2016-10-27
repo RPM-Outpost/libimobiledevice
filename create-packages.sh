@@ -38,7 +38,7 @@ spec_file="libimobiledevice_$arch.spec"
 rpmbuild -ba $spec_file --define "_topdir $top_dir" --define "_rpmdir $rpm_dir"
 echo "-----------"
 echo "Done!"
-echo "The RPMs files are located in the \"RPMs\" folder."
+echo "The RPMs files are located in the \"RPMs/$arch\" folder."
 
 # Removes the work directory if the user wants to
 read -p "Do you want to remove the work directory? [y/N]" answer
