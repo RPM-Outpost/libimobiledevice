@@ -18,4 +18,4 @@ You'll also find 64 bits RPM packages in the [folder RPMs/x86_64](https://github
 When a new commit is pushed to the libimobiledevice's repository, all you have to do is to run `create-packages.sh` again, and to install the RPM packages normally (ie with `sudo dnf install package-name.rpm`). This will update any old libimobiledevice's package.
 
 ## Supported distributions
-For now, only Fedora 24 is supported. It might work on other RPM-based distros.
+For now, only Fedora 24 is supported. But it might work on other RPM-based distros. Let me know if it works for you!
