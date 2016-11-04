@@ -36,6 +36,20 @@ tar -xzf $archive_file -C $work_dir
 modif_date=$(date -r $work_dir/libimobiledevice-master/README +%Y.%m.%d)
 echo "The last modification of libimobiledevice was on $modif_date"
 
+# Remove old RPMs if the user wants to
+if [ -d $rpm_dir ]
+then
+	echo 'The RPMs directory already exist. It may contain outdated rpm packages.'
+	read -p "Do you want to remove the RPMs directory? [y/N]" answer
+	case $answer in
+		[Yy]* )
+			rm -r $rpm_dir
+			echo "RPMs directory removed."		
+			;;
+		* ) echo "Ok, I won't remove it." ;;
+	esac
+fi
+
 # Chooses the spec file based on the system's architecture and build the packages
 echo 'Building RPM packages...'
 arch=$(uname -m)
