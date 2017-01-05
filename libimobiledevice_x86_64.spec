@@ -45,7 +45,7 @@ Command utilities for libimobiledevice.
 
 ## build
 %build
-./autogen.sh
+./autogen.sh %{?autogen_params}
 %configure --disable-static
 %make_build
 
