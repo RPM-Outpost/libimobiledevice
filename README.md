@@ -31,4 +31,5 @@ This will update any old libimobiledevice's package.
 ## Supported distributions
 - Fedora 24
 - Fedora 25
+
 It probably work on other RPM-based distros but I haven't tested it. Let me know if it works for you!
