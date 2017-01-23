@@ -2,18 +2,22 @@
 To communicate with iOS devices, there exists a great library: [libimobiledevice](https://github.com/libimobiledevice/libimobiledevice).
 Unfortunately, the latest official release is a bit old and doesn't support the most recent versions of iOS.
 The upstream version is much better, but it isn't easily available in Linux distros (because it's not a release).
-That's why I've made a little script that download, build and make an RPM package of libimobiledevice!
+That's why I've made a little script that downloads, builds and makes an RPM package of libimobiledevice!
 
 ## How to use
 1. Run the [create-package.sh](https://github.com/RPM-Outpost/libimobiledevice-rpm/blob/master/create-package.sh) script from the command line. It will download the latest version of libimobiledevice and build several RPM packages.
 2. Then, install the packages you want with `sudo dnf install <rpm files>`.
 
 ### Requirements
-You need to install the `rpmdevtools` package to build RPM packages and use the script.
-Don't worry: the script detects if it isn't installed, and can install it for you.
+You need the following packages to make the script work:
+rpmdevtools, usbmuxd, libtool, automake, autoconf, make, gcc, pkgconfig,
+python-devel, libusbmuxd-devel, libplist-devel, python2-Cython, libplist-python,
+openssl-devel (or gnutls-devel)  
+
+Don't worry: the script detects any missing requirement and can install it for you.
 
 ### About root privileges
-Building an RPM package with root privileges is dangerous, because a mistake in SPEC file could result in running nasty commands.
+Building an RPM package with root privileges is **dangerous**, because a mistake in SPEC file could result in running nasty commands.
 See http://serverfault.com/questions/10027/why-is-it-bad-to-build-rpms-as-root.
 
 ## What package(s) do I need?
