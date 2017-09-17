@@ -33,7 +33,6 @@ When a new commit is pushed to the libimobiledevice's repository, you just you h
 This will update any old libimobiledevice's package.
 
 ## Supported distributions
-- Fedora 24
-- Fedora 25
+- Fedora 26
 
 It probably work on other RPM-based distros but I haven't tested it. Let me know if it works for you!
