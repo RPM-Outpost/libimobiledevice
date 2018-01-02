@@ -111,4 +111,4 @@ disp "The RPM package is located in the \"RPMs/$arch\" folder."
 disp '----------------'
 
 ask_remove_dir "$work_dir"
-ask_installpkg "all" "allowerasing"
+ask_installpkg "all"
