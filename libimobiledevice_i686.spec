@@ -65,7 +65,7 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 ## files included in the basic "libimobiledevice" package
 %files
 %license COPYING.LESSER
-%doc AUTHORS README
+%doc AUTHORS README.md
 %{_libdir}/*.so.*
 
 ##files included in the "libimobiledevice-utils" package
